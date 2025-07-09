@@ -9,7 +9,7 @@ use Prism\Prism\Enums\Provider;
 enum ModelName: string
 {
     // case GEMINI_2_0_FLASH_LITE = 'gemini-2.0-flash-lite';
-    // case GEMINI_2_0_FLASH = 'gemini-2.0-flash';
+    case GEMINI_2_5_FLASH = 'gemini-2.5-flash';
     case GPT_4O_MINI = 'gpt-4o-mini';
     case GPT_4_1_NANO = 'gpt-4.1-nano';
     case O4_MINI = 'o4-mini';
@@ -28,6 +28,7 @@ enum ModelName: string
     public function getName(): string
     {
         return match ($this) {
+            self::GEMINI_2_5_FLASH => 'GEMINI-2.5 Flash',
             self::GPT_4O_MINI => 'GPT-4o mini',
             self::GPT_4_1_NANO => 'GPT-4.1 Nano',
             self::O4_MINI => 'O4 mini',
@@ -37,6 +38,7 @@ enum ModelName: string
     public function getDescription(): string
     {
         return match ($this) {
+            self::GEMINI_2_5_FLASH => 'Best for large scale processing, low-latency, high volume tasks.',
             self::GPT_4O_MINI => 'Cheapest model, best for smarter tasks',
             self::GPT_4_1_NANO => 'Cheapest model, best for simpler tasks',
             self::O4_MINI => 'Reasoning model, best for complex tasks',
@@ -46,6 +48,7 @@ enum ModelName: string
     public function getProvider(): Provider
     {
         return match ($this) {
+            self::GEMINI_2_5_FLASH => Provider::Gemini,
             self::GPT_4O_MINI => Provider::OpenAI,
             self::GPT_4_1_NANO => Provider::OpenAI,
             self::O4_MINI => Provider::OpenAI,
